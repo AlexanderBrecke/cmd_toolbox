@@ -1,4 +1,4 @@
 @echo off
 echo creating w: drive..
-subst w: ../work
+subst w: %1
 echo w: drive created

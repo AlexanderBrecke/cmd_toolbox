@@ -14,7 +14,7 @@ REM Add scripts folder to path
 :ADDSCRIPTS
 endlocal
 echo ...
-pushd cmd_setups
+pushd %~pd0cmd_setups
 call cmd_setup_add_scripts %~pd0scripts
 popd
 
@@ -22,12 +22,13 @@ popd
 :CHECKWDRIVE
 endlocal
 if exist w: goto :EXIT
-if exist work goto :ADDWDRIVE
+if not exist work\ goto :EXIT
 
+REM This assumes your work folder is up one level from the toolbox
 :ADDWDRIVE
 echo ...
-pushd cmd_setups
-call cmd_setup_w_drive
+pushd %~pd0cmd_setups
+call cmd_setup_w_drive %~pd0..\work
 popd
 
 :EXIT
